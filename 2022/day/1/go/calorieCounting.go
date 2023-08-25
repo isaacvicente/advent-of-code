@@ -10,6 +10,7 @@ import (
 
 func main() {
 	filePath := os.Args[1]
+	// Read the input
 	readFile, err := os.Open(filePath)
 
 	check(err)
@@ -19,15 +20,17 @@ func main() {
 	var fileLines []string
 
 	for fileScanner.Scan() {
+		// Append all the lines in the string array
 		fileLines = append(fileLines, fileScanner.Text())
 	}
 
-	readFile.Close()
+	defer readFile.Close()
 
 	var sum int = 0
 	var calories int = 0
 	for _, line := range fileLines {
 		if line != "" {
+			// Convert string to integer
 			num, err := strconv.Atoi(line)
 			check(err)
 			sum += num
@@ -35,6 +38,7 @@ func main() {
 			if sum > calories {
 				calories = sum
 			}
+			// Reset the sum for the next elf
 			sum = 0
 		}
 	}
@@ -42,6 +46,7 @@ func main() {
 	fmt.Println(calories)
 }
 
+// Error checking
 func check(err error) {
 	if err != nil {
 		log.Fatal(err)
