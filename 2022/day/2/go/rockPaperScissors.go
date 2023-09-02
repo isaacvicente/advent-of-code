@@ -14,9 +14,8 @@ func main() {
 }
 
 func part1() int {
-	filePath := os.Args[1]
 	// Read the input
-	readFile, err := os.Open(filePath)
+	readFile, err := os.Open("../input.txt")
 
 	check(err)
 
@@ -71,9 +70,8 @@ func part1() int {
 }
 
 func part2() int {
-	filePath := os.Args[1]
 	// Read the input
-	readFile, err := os.Open(filePath)
+	readFile, err := os.Open("../input.txt")
 
 	check(err)
 
